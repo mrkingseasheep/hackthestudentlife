@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResearchMatch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a12;
+      --card: #12121e;
+      --accent: #6c63ff;
+      --gold: #f0c040;
+      --text: #e8e8f0;
+      --muted: #888;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 700px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 6px 18px;
+      border-radius: 99px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 8vw, 80px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 span { color: var(--gold); }
+    p.sub {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 50px;
+    }
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 36px 32px;
+      width: 260px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+    .card-icon { font-size: 40px; margin-bottom: 16px; }
+    .card h2 { font-size: 22px; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .card.gold-card:hover { border-color: var(--gold); }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="badge">✦ Research Matching</div>
+    <h1>Find Your <span>Research</span> Match</h1>
+    <p class="sub">Connect students with professors based on shared research interests. Like Tinder, but for science.</p>
+    <div class="cards">
+      <a href="/professor" class="card">
+        <div class="card-icon">🔬</div>
+        <h2>I'm a Professor</h2>
+        <p>Post your research interests and find motivated students</p>
+      </a>
+      <a href="/student" class="card gold-card">
+        <div class="card-icon">🎓</div>
+        <h2>I'm a Student</h2>
+        <p>Enter your interests and discover professors to work with</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

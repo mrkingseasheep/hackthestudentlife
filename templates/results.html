@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Matches – ResearchMatch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0a0a12; --card:#12121e; --accent:#6c63ff; --gold:#f0c040; --text:#e8e8f0; --muted:#888; --border:rgba(255,255,255,0.08); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; padding:40px 20px; }
+    .container { max-width:720px; margin:0 auto; }
+    .back { color:var(--muted); text-decoration:none; font-size:14px; display:inline-block; margin-bottom:32px; }
+    .header { margin-bottom:40px; }
+    h1 { font-family:'Playfair Display',serif; font-size:42px; margin-bottom:8px; }
+    h1 span { color:var(--gold); }
+    .sub { color:var(--muted); font-size:16px; }
+    /* Match card */
+    .match-card {
+      background:var(--card); border:1px solid var(--border); border-radius:16px;
+      padding:28px 32px; margin-bottom:20px;
+      display:flex; align-items:flex-start; gap:24px;
+      transition:border-color 0.2s;
+    }
+    .match-card:hover { border-color:rgba(108,99,255,0.4); }
+    .score-circle {
+      flex-shrink:0; width:64px; height:64px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:15px;
+      border:2px solid;
+    }
+    .score-high { border-color:var(--gold); color:var(--gold); background:rgba(240,192,64,0.08); }
+    .score-mid  { border-color:var(--accent); color:var(--accent); background:rgba(108,99,255,0.08); }
+    .score-low  { border-color:var(--muted); color:var(--muted); }
+    .info h2 { font-size:20px; margin-bottom:4px; }
+    .dept { color:var(--muted); font-size:14px; margin-bottom:10px; }
+    .lab  { font-size:13px; color:var(--accent); margin-bottom:10px; }
+    .interests { font-size:13px; color:var(--muted); margin-bottom:12px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag {
+      background:rgba(108,99,255,0.15); border:1px solid rgba(108,99,255,0.3);
+      color:#aaa8ff; font-size:12px; padding:4px 12px; border-radius:99px;
+    }
+    /* No matches */
+    .empty { text-align:center; padding:80px 20px; }
+    .empty h2 { font-size:28px; margin-bottom:12px; }
+    .empty p { color:var(--muted); margin-bottom:28px; }
+    .btn {
+      display:inline-block; padding:14px 28px; border-radius:10px;
+      text-decoration:none; font-weight:500; font-size:15px;
+    }
+    .btn-purple { background:var(--accent); color:#fff; }
+    .btn-gold   { background:var(--gold); color:#0a0a12; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">← Back to home</a>
+    <div class="header">
+      <h1>Matches for <span>{{ student_name }}</span></h1>
+      <p class="sub">Based on interests: {{ student_interests }}</p>
+    </div>
+
+    {% if matches %}
+      {% for prof in matches %}
+        {% if prof.score >= 50 %}
+          {% set circle_class = 'score-high' %}
+        {% elif prof.score >= 25 %}
+          {% set circle_class = 'score-mid' %}
+        {% else %}
+          {% set circle_class = 'score-low' %}
+        {% endif %}
+        <div class="match-card">
+          <div class="score-circle {{ circle_class }}">{{ prof.score }}%</div>
+          <div class="info">
+            <h2>{{ prof.name }}</h2>
+            <p class="dept">{{ prof.department }}</p>
+            {% if prof.lab and prof.lab != 'N/A' %}
+              <p class="lab">🔬 {{ prof.lab }}</p>
+            {% endif %}
+            <p class="interests">{{ prof.interests }}</p>
+            {% if prof.shared %}
+              <div class="tags">
+                {% for kw in prof.shared %}
+                  <span class="tag">✓ {{ kw }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty">
+        <h2>No matches yet 🔭</h2>
+        <p>No professors have matching interests. Try adding professors first, or broaden your keywords.</p>
+        <a href="/professor" class="btn btn-purple" style="margin-right:12px">Add a Professor</a>
+        <a href="/student" class="btn btn-gold">Try Again</a>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

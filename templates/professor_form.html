@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Professor Profile – ResearchMatch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0a0a12; --card:#12121e; --accent:#6c63ff; --text:#e8e8f0; --muted:#888; --border:rgba(255,255,255,0.1); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+    .container { width:100%; max-width:500px; }
+    .back { color:var(--muted); text-decoration:none; font-size:14px; display:inline-block; margin-bottom:32px; }
+    .back:hover { color:var(--text); }
+    h1 { font-family:'Playfair Display',serif; font-size:36px; margin-bottom:8px; }
+    .sub { color:var(--muted); margin-bottom:40px; }
+    .field { margin-bottom:24px; }
+    label { display:block; font-size:13px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:8px; }
+    input, textarea {
+      width:100%; background:var(--card); border:1px solid var(--border);
+      border-radius:10px; padding:14px 16px; color:var(--text);
+      font-family:'DM Sans',sans-serif; font-size:15px;
+      outline:none; transition:border-color 0.2s;
+    }
+    input:focus, textarea:focus { border-color:var(--accent); }
+    textarea { resize:vertical; min-height:80px; }
+    .hint { font-size:12px; color:var(--muted); margin-top:6px; }
+    button {
+      width:100%; background:var(--accent); color:#fff; border:none;
+      border-radius:10px; padding:16px; font-size:16px; font-weight:500;
+      font-family:'DM Sans',sans-serif; cursor:pointer; transition:opacity 0.2s;
+    }
+    button:hover { opacity:0.85; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">← Back to home</a>
+    <h1>Professor Profile</h1>
+    <p class="sub">Tell us about your research so students can find you</p>
+    <form method="POST" action="/professor">
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Dr. Jane Smith" required>
+      </div>
+      <div class="field">
+        <label>Department</label>
+        <input type="text" name="department" placeholder="Computer Science" required>
+      </div>
+      <div class="field">
+        <label>Research Interests</label>
+        <textarea name="interests" placeholder="machine learning, healthcare, medical imaging" required></textarea>
+        <p class="hint">Comma-separated keywords</p>
+      </div>
+      <div class="field">
+        <label>Lab / Group Name <span style="color:#444">(optional)</span></label>
+        <input type="text" name="lab" placeholder="AI for Health Lab">
+      </div>
+      <button type="submit">Save Profile ✦</button>
+    </form>
+  </div>
+</body>
+</html>
