@@ -1,11 +1,11 @@
-# ResearchMatch 🔬
+# FindAProf UofT 
 Tinder-style research interest matching for students & professors.
 
 ---
 
 ## Project Structure
 ```
-researchmatch/
+hackthestudentlife/
 ├── app.py              ← Flask backend (all logic lives here)
 ├── requirements.txt    ← Python dependencies
 └── templates/
@@ -65,7 +65,7 @@ region = us-east-1
 
 ## 4. Run the App
 ```bash
-cd researchmatch
+cd hackthestudentlife
 python app.py
 ```
 Open http://localhost:5000 in your browser.
