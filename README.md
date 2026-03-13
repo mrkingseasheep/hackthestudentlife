@@ -1,4 +1,4 @@
-# FindAProf UofT 
+# SwiftySwipy
 Tinder-style research interest matching for students & professors.
 
 ---
