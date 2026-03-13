@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ResearchMatch AI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <div class="logo-mark">RM</div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-eyebrow">AI-Powered Academic Discovery</div>
+      <h1 class="hero-title">
+        Find Your <em>Research</em><br/>Match
+      </h1>
+      <p class="hero-sub">Describe what you're curious about — in plain English.<br/>We'll match you with professors and generate a cold email.</p>
+
+      <div class="search-container">
+        <textarea
+          id="query"
+          class="search-box"
+          placeholder="e.g. I'm interested in using machine learning to detect diseases from medical images..."
+          rows="3"
+        ></textarea>
+        <button class="search-btn" id="searchBtn" onclick="search()">
+          <span class="btn-text">Find Professors</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </div>
+
+      <div class="example-chips">
+        <span class="chip-label">Try:</span>
+        <button class="chip" onclick="fillExample('I want to work on autonomous robots that can navigate complex environments safely')">Autonomous Robots</button>
+        <button class="chip" onclick="fillExample('I\'m passionate about using AI to understand the human genome and fight cancer')">AI in Genomics</button>
+        <button class="chip" onclick="fillExample('I want to improve wireless networks for 6G using advanced signal processing')">6G Wireless</button>
+      </div>
+    </section>
+
+    <div class="loader" id="loader">
+      <div class="loader-ring"></div>
+      <p class="loader-text">Analyzing your interests<span class="dots"></span></p>
+    </div>
+
+    <section class="results-section" id="results" hidden>
+      <div class="results-header">
+        <h2 class="results-title">Your Top Matches</h2>
+        <p class="results-sub" id="resultsSub"></p>
+      </div>
+      <div class="cards-grid" id="cardsGrid"></div>
+    </section>
+
+    <div class="error-box" id="errorBox" hidden>
+      <span class="error-icon">⚠</span>
+      <p id="errorMsg">Something went wrong. Please try again.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>FindAProfUofT AI &mdash;</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
